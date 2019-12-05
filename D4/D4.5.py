@@ -28,9 +28,3 @@ for i in range(input[0],input[1]+1):
     if check(i)==True:
         valid.append(i)
 print(len(valid))
-
-# print(check(112233))
-# print(check(123444))
-# print(check(111122))
-
-
