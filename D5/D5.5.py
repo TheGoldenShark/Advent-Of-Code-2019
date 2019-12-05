@@ -43,9 +43,8 @@ while True:
         pointer+=2
     #Output
     elif str(data[pointer])[-1]=="4":
-        valI[0]=True
         val = setVals(data,pointer,valI,1)
-        print(data[val[0]])
+        print(val[0])
         pointer+=2
     #jump-if-true
     elif str(data[pointer])[-1]=="5":
