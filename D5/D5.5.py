@@ -6,17 +6,15 @@ pointer=0
 valI = [False, False, False]
 
 def setVals(data,pointer,valI,noVals):
-    val = [0,0,0]
+    val = []
     for i in range(0,noVals):
         if valI[i]:
-            val[i]=data[pointer+i+1]
+            val.append(data[pointer+i+1])
         else:
-            val[i]=data[data[pointer+i+1]]
+            val.append(data[data[pointer+i+1]])
     return val
-
-while pointer+3<len(data):
-    iStuff = str(data[pointer])[:-2]
-    iStuff = iStuff[::-1]
+while True:
+    iStuff = str(data[pointer])[:-2][::-1]
     for i in range(0,3):
         if len(iStuff)<=i:
             valI[i]=False
@@ -40,7 +38,7 @@ while pointer+3<len(data):
         valI[0]=True
         val = setVals(data,pointer,valI,1)
         print("--- Input Number ---")
-        val[1] = int(input(">> "))
+        val.append(int(input(">> ")))
         data[val[0]] = val[1]
         pointer+=2
     #Output

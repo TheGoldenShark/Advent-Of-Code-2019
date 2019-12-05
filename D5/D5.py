@@ -20,7 +20,6 @@ while pointer+3<len(data):
             valI[i]=False
         else:
             valI[i]=bool(int(iStuff[i]))
-
     if str(data[pointer])[-1]=="1":
         valI[2]=True
         val = setVals(data,pointer,valI,3)
