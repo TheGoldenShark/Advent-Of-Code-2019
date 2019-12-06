@@ -80,4 +80,3 @@ while True:
         pointer+=4
     #Stop
     else: break
-
