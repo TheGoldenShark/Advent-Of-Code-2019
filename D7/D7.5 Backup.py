@@ -1,8 +1,10 @@
 import itertools, sys
 phaseSettings = itertools.permutations([5,6,7,8,9])
-with open("input.txt","r") as f: data=f.readline()
-# with open("test0.txt","r") as f: data=f.readline()
+# with open("input.txt","r") as f: data=f.readline()
+with open("test0.txt","r") as f: data=f.readline()
 data = [int(x) for x in data[:-1].split(',')]
+memories=[]
+for x in range(0,5): memories.append(list([list(data),0,False]))
 def setVals(memory,pointer,registerI,noVals):
     register = []
     for i in range(0,noVals):
@@ -49,7 +51,7 @@ def compute(phaseSetting, value, memory, pointer, phaseDone):
         elif str(memory[pointer])[-1]=="4":
             register = setVals(memory,pointer,registerI,1)
             pointer+=2
-            return(register[0], memory, pointer, phaseDone, False)
+            return(register[0], memory, pointer, phaseDone)
         #jump-if-true
         elif str(memory[pointer])[-1]=="5":
             register = setVals(memory,pointer,registerI,2)
@@ -85,23 +87,18 @@ def compute(phaseSetting, value, memory, pointer, phaseDone):
         #Stop
         else: 
             print(value)
-            return(value, memory, pointer, phaseDone, True)
-def main(data,permutation):
-    memories=[]
-    for x in range(0,5): memories.append(list([list(data),0,False]))
-    c=0
-    currentVal=0
-    done=False
-    while done==False:
-        for p in permutation:
-            currentVal, memories[c%5][0], memories[c%5][1], memories[c%5][2], done = compute(p, currentVal, memories[c%5][0], memories[c%5][1], memories[c%5][2])
-            if done==True:
-                break
-            c+=1
-    return currentVal
+            sys.exit()
+        
 
-signals=[]
-permutations=itertools.permutations([9,8,7,6,5])
-for k in permutations:
-    signals.append(main(data,k))
-print(max(signals))
+
+
+k=[9,8,7,6,5]
+
+c=0
+currentVal=0
+while True:
+    for p in k:
+        currentVal, memories[c%5][0], memories[c%5][1], memories[c%5][2] = compute(p, currentVal, memories[c%5][0], memories[c%5][1], memories[c%5][2])
+        print(currentVal)
+        c+=1
+    
