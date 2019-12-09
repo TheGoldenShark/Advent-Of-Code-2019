@@ -1,12 +1,4 @@
 with open("input.txt","r") as f: data=f.readline() 
-#Passed
-# with open("d5test.txt","r") as f: data=f.readline() 
-#Passed
-# with open("test0.txt","r") as f: data=f.readline() 
-#Passed
-# with open("test1.txt","r") as f: data=f.readline() 
-#Passed
-# with open("test2.txt","r") as f: data=f.readline() 
 data = [int(x) for x in data[:-1].split(',')]
 # Size of memory is kn where n is size of instruction
 size=100
