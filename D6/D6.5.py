@@ -16,5 +16,4 @@ parent("YOU",data, 0, 0)
 parent("SAN",data, 0, 1)
 results = sets[0].intersection(sets[1])
 distances= [(dists[0][x] + dists[1][x]) for x in results]
-print(min(distances)-4)
-print("test")    
+print(min(distances)-4)   
