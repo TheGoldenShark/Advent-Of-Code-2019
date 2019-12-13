@@ -12,6 +12,12 @@ coords=set()
 tileDict=dict()
 data[0]=2
 direction=0
+placedReqs=[False,False]
+
+def reverseDict(dict, coords, thing):
+    for i in coords:
+        if dict[i]==thing:
+            return i
 
 def setVals(data,pointer,paramMode,noVals):
     register = []
@@ -61,9 +67,12 @@ while True:
             outputTemp.append(register[0])
             outputCounter+=1
         if outputCounter==3:
+            if outputTemp[:-1]==[-1,0]:
+                print("Current Score" + str(outputTemp[2]))
+            else:
+                coords.add(tuple(outputTemp[:-1]))
+                tileDict[tuple(outputTemp[:-1])]=outputTemp[2]
             outputCounter=0
-            coords.add(tuple(outputTemp[:-1]))
-            tileDict[tuple(outputTemp[:-1])]=outputTemp[2]
             outputTemp=[]
         pointer+=2
     #jump-if-true
@@ -109,12 +118,13 @@ while True:
     #Stop
     elif instruction=="99":
         break
-
-wallCount=0
-for i in coords:
-    if tileDict[i]==2:
-        wallCount+=1
-
-
-print(wallCount)
-print("strongandstable5")
+    
+    ballPos=reverseDict(tileDict,coords,4)
+    paddlePos=reverseDict(tileDict,coords,3)
+    if ballPos is not None and paddlePos is not None:
+        if ballPos[0]>paddlePos[0]:
+            direction=1
+        elif ballPos[0]<paddlePos[0]:
+            direction=-1
+        else:
+            direction=0

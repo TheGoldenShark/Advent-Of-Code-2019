@@ -116,4 +116,3 @@ for i in coords:
 
 
 print(wallCount)
-print("strongandstable5")

@@ -2,8 +2,7 @@ from math import gcd
 with open("input.txt","r") as f: data=f.readlines()
 # with open("test.txt","r") as f: data=f.readlines()
 dataNew=[]
-for x in data:
-    dataNew.append(("").join(list(filter(lambda ch: ch not in "<>xyz= ", x))[:-1]).split(","))   
+dataNew = [("").join(list(filter(lambda ch: ch not in "<>xyz= ", x))[:-1]).split(",") for x in data]
 for x in range(0,len(dataNew)):
     for y in range(0,len(dataNew[x])):
         dataNew[x][y] = int(dataNew[x][y])
